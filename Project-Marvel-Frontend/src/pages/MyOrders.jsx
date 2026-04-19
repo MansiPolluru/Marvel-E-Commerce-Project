@@ -52,11 +52,11 @@ function MyOrders() {
     fetchOrders();
   }, []);
 
-  // ✅ 2. Fixed handleCancel to match your backend PATCH endpoint
+  
   const handleCancel = async (id) => {
     if (window.confirm("Are you sure you want to cancel this order?")) {
       try {
-        // MATCHES BACKEND: .patch("/orders/status/{id}", "CANCELLED")
+        
         await API.put(`/orders/cancel/${id}`, "CANCELLED");
         // toast.warn("Order Cancelled ❌");
         toast.success("Order Cancelled Successfully ❌");
@@ -87,7 +87,7 @@ function MyOrders() {
                 <th>Size</th>
                 <th>Qty</th>
                 <th>Price</th>
-                {/* 🛡️ ADD THIS LINE HERE */}
+                
                 <th>Address</th>
                 <th>Date</th>
                 <th>Status</th>
@@ -114,7 +114,7 @@ function MyOrders() {
                     <td>{order.quantity}</td>
                     <td>${order.totalPrice}</td>
                     
-                    {/* 🛡️ ADD THIS LINE HERE */}
+                    
                     <td style={{ fontSize: '0.8rem', maxWidth: '150px' }}>
                       {order.address || "N/A"}
                     </td>

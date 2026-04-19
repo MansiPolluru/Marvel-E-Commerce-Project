@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import API from '../services/api';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
 
-  // 🔥 SINGLE useEffect (FIXED)
+  // 🔥 SINGLE useEffect
   useEffect(() => {
     API.get(`/products/${id}`)
       .then((res) => {

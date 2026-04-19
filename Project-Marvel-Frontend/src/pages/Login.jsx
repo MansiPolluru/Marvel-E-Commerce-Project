@@ -25,7 +25,7 @@ function Login() {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data));
 
-      console.log("LOGIN RESPONSE:", res.data);
+      // console.log("LOGIN RESPONSE:", res.data);
 
       // ✅ Role-based navigation with a hard redirect to refresh Navbar
       if (res.data.role === "ROLE_ADMIN") {

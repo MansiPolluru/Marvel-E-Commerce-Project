@@ -15,8 +15,8 @@ function AdminDashboard() {
       const res = await API.get("/orders/all")
       console.log("Orders:", res.data); // 🔥 debug
       // setAllOrders(res.data)
-      
-      
+
+
       // 🔥 PRIORITY MAP
       // 1 = Top (Pending), 2 = Middle (Delivered), 3 = Bottom (Cancelled)
       const statusPriority = {
@@ -31,8 +31,8 @@ function AdminDashboard() {
       })
 
       setAllOrders(sortedOrders)
-      
-      
+
+
     } catch (err) {
       console.error("Error fetching orders", err)
     }
@@ -61,7 +61,7 @@ function AdminDashboard() {
           <tr style={{ color: '#32CD32' }}>
             <th>User</th>
             <th>Product</th>
-            {/* 1. ADDED HEADER HERE */}
+
             <th>Shipping Address</th>
             <th>Total</th>
             <th>Status</th>
@@ -88,22 +88,22 @@ function AdminDashboard() {
                   textDecoration: order.deliveryStatus === "DELIVERED" ? 'line-through' : 'none',
                   textDecorationColor: order.deliveryStatus === "DELIVERED" ? '#32CD32' : 'transparent', // Green line
                   textDecorationThickness: '2px', // Makes the line stand out
-                  color: order.deliveryStatus === "DELIVERED" ? '#32CD32' : 'white' 
+                  color: order.deliveryStatus === "DELIVERED" ? '#32CD32' : 'white'
                 }}>
                   {order.itemName} (x{order.quantity})
                 </td>
 
-                {/* 2. ADDED DATA CELL HERE */}
+
                 <td style={{ fontSize: '0.9rem', maxWidth: '200px' }}>
                   {order.address || "N/A"}
                 </td>
 
                 <td>${order.totalPrice}</td>
 
-                <td style = {{
+                <td style={{
                   color: order.deliveryStatus === "DELIVERED" ? '#32CD32' : // 🟢 Green
-                        order.deliveryStatus === "CANCELLED" ? '#FF0000' : // 🔴 Red
-                        '#FFA500'
+                    order.deliveryStatus === "CANCELLED" ? '#FF0000' : // 🔴 Red
+                      '#FFA500'
                 }}>{order.deliveryStatus}</td>
 
                 <td>

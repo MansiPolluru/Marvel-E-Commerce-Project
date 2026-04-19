@@ -4,30 +4,29 @@ import { toast, ToastContainer } from 'react-toastify';
 import API from '../services/api';
 
 function CartPage() {
-  
+
   const navigate = useNavigate();
 
-  // const [cart, setCart] = useState([]);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     console.log("USER:", user);
     if (user && user.id) {
       API.get(`/cart/${user.id}`)
         .then((res) => {
-          console.log("CART RESPONSE:", res.data);
-          
+          // console.log("CART RESPONSE:", res.data);
+
           if (res.data && res.data.length > 0) {
-          const dbCart = res.data.map(item => ({
-            ...item.product,
-            quantity: item.quantity,
-            selectedSize: item.size,
-            dbId: item.id
-          }));
-          
-          
-          setCart(dbCart);
-          localStorage.setItem("cart", JSON.stringify(dbCart));
-        }
+            const dbCart = res.data.map(item => ({
+              ...item.product,
+              quantity: item.quantity,
+              selectedSize: item.size,
+              dbId: item.id
+            }));
+
+
+            setCart(dbCart);
+            localStorage.setItem("cart", JSON.stringify(dbCart));
+          }
         })
         .catch(err => console.error("Could not sync cart from database", err));
     }
@@ -60,7 +59,7 @@ function CartPage() {
 
     if (user) {
       try {
-        // You will need to create this DELETE endpoint in your Spring Boot CartController
+
         await API.delete(`/cart/${itemToRemove.dbId}`);
       } catch (err) {
         console.error("Failed to remove from DB", err);
@@ -75,9 +74,9 @@ function CartPage() {
     updated[index].quantity += 1;
     setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
-    
+
     // SYNC TO DB
-    updateQtyInDb(updated[index].dbId, 1, updated[index].selectedSize); 
+    updateQtyInDb(updated[index].dbId, 1, updated[index].selectedSize);
   };
 
   // ➖ FIXED
@@ -96,16 +95,16 @@ function CartPage() {
 
 
   const total = cart.reduce((sum, item) => {
-    // Ensure price and quantity are actual numbers, fallback to 0 if not
+
     const price = Number(item.price) || 0;
     const qty = Number(item.quantity) || 1;
     return sum + (price * qty);
   }, 0);
-  
-  
+
+
 
   const handleCheckout = () => {
-    
+
     const user = JSON.parse(localStorage.getItem("user")); // Check for user
 
     if (!user) {
@@ -115,15 +114,15 @@ function CartPage() {
       }, 1500);
       return;
     }
-    
+
     if (cart.length === 0) {
       toast.error("Your cart is empty! 🛒");
     } else {
       navigate('/checkout'); // Redirect to your new form page
     }
   };
-  
-  
+
+
   const handleViewOrders = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -137,7 +136,7 @@ function CartPage() {
 
     navigate('/orders');
   };
-  
+
 
   const updateQtyInDb = async (cartId, newQty, size) => {
     try {
@@ -145,21 +144,21 @@ function CartPage() {
         quantity: newQty,
         size: size
       });
-  
+
       console.log("Quantity updated in DB ✅");
-  
+
     } catch (err) {
       console.log("DB UPDATE ERROR:", err.response?.data);
     }
   };
-  
+
 
   return (
     <div className="cart-container">
       <ToastContainer />
       {/* LEFT SIDE */}
       <div className="cart-left">
-      
+
         <h2>Your Cart 🛒</h2>
 
         {cart.length === 0 ? (
@@ -212,7 +211,7 @@ function CartPage() {
       {/* RIGHT SIDE (The Checkout Sidebar) */}
 
       <div className="cart-right">
-        
+
         <h3>Subtotal</h3>
         <h2>${total}</h2>
 
@@ -222,8 +221,8 @@ function CartPage() {
 
         {/* 🔥 NEW BUTTON */}
         {/* ✅ THE BEST SPOT: VIEW MY ORDERS BUTTON */}
-        <button 
-          className="view-orders-btn" 
+        <button
+          className="view-orders-btn"
           onClick={() => handleViewOrders()}
           style={{
             marginTop: '15px',
@@ -238,7 +237,7 @@ function CartPage() {
           }}
         >
           View My Orders 🛡️
-        </button> 
+        </button>
       </div>
 
     </div>
