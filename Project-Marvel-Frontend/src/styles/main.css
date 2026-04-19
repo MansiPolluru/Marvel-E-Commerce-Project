@@ -1,0 +1,544 @@
+/* ================= GLOBAL ================= */
+body {
+  background-color: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= LAYOUT ================= */
+.main-content {
+  min-height: 80vh;
+}
+
+/* ================= NAVBAR ================= */
+.navbar-brand {
+  font-size: 24px;
+}
+
+/* ================= HEADINGS ================= */
+h1, h2 {
+  color: #9333ea;
+  font-weight: bold;
+}
+
+/* ================= BUTTONS ================= */
+button {
+  font-weight: bold;
+}
+
+/* ================= IMAGES ================= */
+img {
+  border-radius: 10px;
+}
+
+/* ================= SEARCH ================= */
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* ================= PRODUCT GRID ================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+
+/* ================= PRODUCT CARD ================= */
+.product-card {
+  background: #0a0a0a;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* ================= IMAGE ================= */
+.product-image {
+  background: #ffffff;
+  padding: 15px;
+}
+
+.product-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+}
+
+/* ================= INFO ================= */
+.product-info {
+  padding: 10px;
+}
+
+.product-info h6 {
+  font-size: 14px;
+  color: rgb(0, 239, 252);
+}
+
+/* PRICE */
+.product-info p {
+  font-weight: bold;
+  color: rgb(75, 142, 228);
+}
+
+/* ================= ADD TO CART ================= */
+.add-btn {
+  margin-top: 10px;
+  background: radial-gradient(orange 40%, rgb(255, 0, 0)) ;
+  border: none;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: radial-gradient( rgb(255, 0, 0) 50%, orange );
+  color: white;
+}
+
+/* ================= MODAL ================= */
+.modal-content {
+  background-color: #080808;
+  color: white;
+  border-radius: 15px;
+  border: 1px solid #6A6A6A;
+}
+
+/* ================= INPUT ================= */
+.form-control {
+  background-color: #17141E;
+  color: white;
+  border: 1px solid #6A6A6A;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.form-control:focus {
+  background-color: #17141E;
+  color: white;
+  border-color: #9333ea;
+  box-shadow: 0 0 5px #9333ea;
+}
+
+/* PLACEHOLDER */
+.form-control::placeholder {
+  color: #A1A1AA;
+}
+
+/* ================= PASSWORD ================= */
+.password-box {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #C0C0C0;
+  cursor: pointer;
+}
+
+/* ================= SOCIAL BUTTONS ================= */
+.social-btn.google {
+  background-color: #17141E;
+  border: 1px solid #6A6A6A;
+}
+
+.social-btn.facebook {
+  background-color: #1877f2;
+  color: white;
+}
+
+/* ================= DIVIDER ================= */
+.divider {
+  text-align: center;
+  margin: 15px 0;
+  position: relative;
+}
+
+.divider span {
+  background: #080808;
+  padding: 0 10px;
+  color: #6A6A6A;
+  position: relative;
+  z-index: 1;
+}
+
+.divider::before {
+  content: "";
+  height: 1px;
+  background: #6A6A6A;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+}
+
+/* ================= LINKS ================= */
+.forgot,
+.switch-link {
+  color: #9333ea;
+  cursor: pointer;
+}
+
+/* ================= NAV SEARCH ================= */
+.nav-search {
+  width: 50%;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.details-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* CART ITEM */
+.cart-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+.size-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: flex-start; /* same line */
+}
+
+.size-btn {
+  border: 1px solid #FBCA03;
+  background: transparent;
+  color: #FBCA03;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.active-size {
+  background-color: #FBCA03;
+  color: black;
+  font-weight: bold;
+}
+
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.qty-box button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #FBCA03;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.qty-box span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart-card {
+  display: flex;
+  gap: 20px;
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+/* 🔥 FIX IMAGE SIZE */
+.cart-card img {
+  width: 120px;        /* control width */
+  height: 120px;       /* control height */
+  object-fit: contain; /* keeps aspect ratio */
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px;
+}
+
+.cart-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.cart-card div {
+  flex: 1;
+}
+
+
+/* 🔥 MAIN LAYOUT */
+.cart-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* LEFT SIDE */
+.cart-left {
+  flex: 3;
+}
+
+/* RIGHT SIDE (STICKY) */
+.cart-right {
+  flex: 1;
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+/* 🔥 CART ROW */
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #1f2937;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+/* IMAGE */
+.cart-row img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 10px;
+}
+
+/* DETAILS */
+.cart-details {
+  flex: 2;
+}
+
+/* PRICE COLUMN */
+.cart-price {
+  text-align: right;
+  font-weight: bold;
+}
+
+/* ITEM TOTAL */
+.item-total {
+  color: #FBCA03;
+}
+
+/* REMOVE BUTTON */
+.remove-btn {
+  margin-top: 10px;
+  background: red;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+/* CHECKOUT BUTTON */
+.checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background: #FBCA03;
+  border: none;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+/* QTY */
+.qty-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.qty-box button {
+  width: 30px;
+  height: 30px;
+  background: #FBCA03;
+  border: none;
+  border-radius: 5px;
+}
+
+
+/* Container/Background overlay */
+.auth-container {
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  background-image: url('https://images8.alphacoders.com/926/926668.jpg');
+
+    /* Prevents the image from tiling if the container is larger than the image */
+    background-repeat: no-repeat;
+
+    /* Scales the image to cover the entire area, cropping edges if necessary to maintain aspect ratio */
+    background-size: cover;
+
+    /* Keeps the image centered so the crop happens equally on all sides */
+    background-position: center;
+
+    /* background-attachment: fixed; */
+    margin: 0; /* Important: removes default margin so the form goes to the absolute corner */
+    min-height: 100vh;
+}
+
+/* The Main Card */
+.auth-card {
+  border-radius: 16px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: -70px;
+  position: absolute;
+  left: 310px;
+
+  background-color: rgba(0, 0, 0, 0.4); /* Black overlay at 40% opacity */
+  background-blend-mode: overlay;
+}
+
+.auth-card-register {
+  border-radius: 16px;
+  padding: 17px 30px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: -70px;
+  position: absolute;
+  left: 310px;
+
+  background-color: rgba(0, 0, 0, 0.4); /* Black overlay at 40% opacity */
+  background-blend-mode: overlay;
+}
+
+.auth-title {
+  color: #a855f7; /* Purple Title */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+
+/* Form Styling */
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #eee;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: white;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 5px rgba(168, 85, 247, 0.4);
+}
+
+/* Links and Buttons */
+.forgot-password {
+  color: #a855f7;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 5px;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  /* background: radial-gradient(#080808,#7C3CA1); Darkened as per the image */
+  background-color: #5946b2;
+  color: #fff; /* Disabled look in image, change to #fff for active */
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  cursor: pointer;
+  /* :hover {
+    background-color: #5946b2;
+    } */
+  }
+  
+  .btn-login:hover{
+  background-color: #7C3CA1;
+  color: #000000;
+}
+
+.signup-text {
+  color: #eee;
+  margin-top: 25px;
+}
+
+.signup-link {
+  color: #a855f7;
+  text-decoration: none;
+  font-weight: bold;
+}
+

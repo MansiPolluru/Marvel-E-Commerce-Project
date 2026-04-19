@@ -1,0 +1,59 @@
+package com.marvel.configuration;
+
+import java.io.IOException;
+import java.util.Collections;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+@Component
+public class JwtFilter extends OncePerRequestFilter {
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+
+            try {
+                String email = jwtUtil.extractEmail(token);
+
+                // 🔥 GET ROLE FROM TOKEN
+                String role = jwtUtil.extractRole(token);
+
+                if (email != null && role != null) {
+
+                    SimpleGrantedAuthority authority =
+                            new SimpleGrantedAuthority(role); // ROLE_ADMIN
+
+                    UsernamePasswordAuthenticationToken auth =
+                            new UsernamePasswordAuthenticationToken(
+                                    email,
+                                    null,
+                                    Collections.singletonList(authority)
+                            );
+
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                }
+
+            } catch (Exception e) {
+                System.out.println("Invalid Token");
+            }
+        }
+
+        filterChain.doFilter(request, response);
+    }
+}
