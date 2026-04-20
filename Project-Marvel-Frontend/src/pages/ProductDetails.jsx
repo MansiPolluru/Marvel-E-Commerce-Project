@@ -33,7 +33,6 @@ function ProductDetails() {
   const addToCart = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    // console.log("USER:", user);
     if (!user) {
       
       toast.error("Please login to add to cart! 🔑");
