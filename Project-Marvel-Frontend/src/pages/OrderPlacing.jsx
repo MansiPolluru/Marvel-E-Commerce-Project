@@ -126,7 +126,8 @@ function OrderPlacing() {
             </div>
 
             <div className="p-3 rounded mb-4" style={{ border: '1px solid #32CD32' }}>
-              <label className="form-label d-block fw-bold mb-2" style={styles.labelBlue}>Payment Method:</label>
+              <label className="form-label d-block fw-bold mb-2" style={styles.labelBlue}>Payment Method: 
+                <p style={{color:"red"}}>[ To protect you from fraud, we exclusively offer Cash on Delivery. Your security is our priority ]</p></label> 
               <div className="form-check">
                 <input className="form-check-input" type="radio" id="cod" name="payment" onChange={() => setIsCodSelected(true)} />
                 <label className="form-check-label text-white" htmlFor="cod">Cash on Delivery (COD)</label>
